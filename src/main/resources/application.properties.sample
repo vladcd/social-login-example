@@ -1,0 +1,8 @@
+social.login.google.client-ids=xxx
+
+social.login.facebook.app-id=xxx
+social.login.facebook.app-secret=xxx
+
+social.login.linkedin.client-id=xxx
+social.login.linkedin.client-secret=xxx
+social.login.linkedin.redirect-uri=xxx

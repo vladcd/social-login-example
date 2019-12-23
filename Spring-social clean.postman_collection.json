@@ -1,0 +1,634 @@
+{
+	"info": {
+		"_postman_id": "383267ba-27e0-45d5-9cd1-bed5126cc530",
+		"name": "Spring-social clean",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Google",
+			"item": [
+				{
+					"name": "Google API Code - run from Chrome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://accounts.google.com/o/oauth2/v2/auth?client_id=<your Google client id goes here>&redirect_uri=<your redirect uri goes here>&scope=<allowed scopes, e.g. email>&response_type=code",
+							"protocol": "https",
+							"host": [
+								"accounts",
+								"google",
+								"com"
+							],
+							"path": [
+								"o",
+								"oauth2",
+								"v2",
+								"auth"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "<your Google client id goes here>"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "<your redirect uri goes here>"
+								},
+								{
+									"key": "scope",
+									"value": "<allowed scopes, e.g. email>"
+								},
+								{
+									"key": "response_type",
+									"value": "code"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Google API Auth Code",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://www.googleapis.com/oauth2/v4/token?code=<the code you got from the previous request in the URL>&client_id=<your Google client id>&client_secret=<your Google client secret>&redirect_uri=<your redirect URI>&grant_type=authorization_code",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"oauth2",
+								"v4",
+								"token"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "<the code you got from the previous request in the URL>"
+								},
+								{
+									"key": "client_id",
+									"value": "<your Google client id>"
+								},
+								{
+									"key": "client_secret",
+									"value": "<your Google client secret>"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "<your redirect URI>"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OAuth Token Google",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "test-secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "test-client",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic Y2xpZW50SWRQYXNzd29yZDpzZWNyZXQ=",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "social",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "google",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjhhNjNmZTcxZTUzMDY3NTI0Y2JiYzZhM2E1ODQ2M2IzODY0YzA3ODciLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiI0ODEyMTY3MDgzODAtdGJ1YThkaDBmdjllbWp1YW1kbHQ2bGVmNXJhZmQ0Zm0uYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI0ODEyMTY3MDgzODAtdGJ1YThkaDBmdjllbWp1YW1kbHQ2bGVmNXJhZmQ0Zm0uYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDgxMjgwNzY5NDY4NzI1Nzk0NTMiLCJlbWFpbCI6InZsYWRjYXJjdUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6IjBwLTdZSXpuWkRLbG83bl9vT1VfMkEiLCJpYXQiOjE1NzE4MTk5NzUsImV4cCI6MTU3MTgyMzU3NX0.lm305mFkJVnUuSG5vvprmq4Eg0ankeG3RzcrBdmt-FT0IbGscS7W0eEMtajNY-Xc6RYLNYSKge_upf8lKB5oiG8u0nqZ4rQVk0G879EvwIPRSCvpKCU-m8_kpN1lUeQYhR7NOEUmeIF54ZuCzCLo1dI-aYPXUHRwyZSqIGLIw5hS9kyRH1i1q9p0Zew9KM1HKi-dSQ4W0bnh9sJDoM84qQaPSbAP4GI2M7wZe-FuTN_GjQCI245_2Vc_C0nNcqaP7zPM_yuEEtab-48vg5a2jgJANOTgf6IqfZmflSUgk-q7kMQ91n_Wbw9PwUWoeIln1yLHNyg1-aVvAgWEUSp1Cw",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Facebook",
+			"item": [
+				{
+					"name": "Facebook API - run from Chrome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.facebook.com/dialog/oauth?client_id=<your app id>&redirect_uri=<your redirect URI>&state=123 <only important for CORS>&response_type=token",
+							"protocol": "https",
+							"host": [
+								"www",
+								"facebook",
+								"com"
+							],
+							"path": [
+								"dialog",
+								"oauth"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "<your app id>"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "<your redirect URI>"
+								},
+								{
+									"key": "state",
+									"value": "123 <only important for CORS>"
+								},
+								{
+									"key": "response_type",
+									"value": "token"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OAuth Token Facebook",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "test-secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "test-client",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic Y2xpZW50SWRQYXNzd29yZDpzZWNyZXQ=",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "social",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "facebook",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "EAADRE2kZA0UQBAEBeXZBa0uAgX6P79PpvZAlyY2KhCqbjUJSUHl0Agbz6XJnGha2A9T4IVtW03nlZB8YjH1pQv8BgnKVVHqFcZCeArzRKL8IZBc6ZAwTUNlO5kclEgO3mAQ2gzikRVJ3zYYM0qYf5r0t19DuGZCickxJCiAAZBaNeS5zW5k7eCUOYokz0szIkMGgZD",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "LinkedIn",
+			"item": [
+				{
+					"name": "LinkedIn API - run from Chrome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=<your client id>&redirect_uri=<your configured redirect uri>&state=<whatever value you'd like>&scope=r_liteprofile%20r_emailaddress%20w_member_social",
+							"protocol": "https",
+							"host": [
+								"www",
+								"linkedin",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"v2",
+								"authorization"
+							],
+							"query": [
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "client_id",
+									"value": "<your client id>"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "<your configured redirect uri>"
+								},
+								{
+									"key": "state",
+									"value": "<whatever value you'd like>"
+								},
+								{
+									"key": "scope",
+									"value": "r_liteprofile%20r_emailaddress%20w_member_social"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OAuth Token LinkedIn",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "test-secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "test-client",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic Y2xpZW50SWRQYXNzd29yZDpzZWNyZXQ=",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "social",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "linkedin",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "AQVOzdshnM-aIKzD7_wWHq6xMk2in1q_PNEzvSJyhen5fFgTZ_ePcRKrlMkZDOF-Uf7h-quGp3jFQ_-2pfHLJXEUsprMWqL7sQYsBShm5KVD6gghOqN1YHBAxxR0LXtDFur4mmvwApVRhXpqW_zCt9kAvooM5BlhmeyZspDhW5MHefqJowQEbpp-4ZFVUg2LQq30Sn8lizqYMf6lXcUSCKLtNbyOgnavvQEzzaVfDdZ8zp5U3umn1-20D-2qrj4nlVGE26nF0v1PlPrU3jJynw0qcrVvH2mHHhBy_t08iAy7tonF3ldHq7AxiU8re4TnKL-eApxj2COydtVR_ClPmUbrIy60IQ",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "OAuth Token User Pass",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test-secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test-client",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2xpZW50SWRQYXNzd29yZDpzZWNyZXQ=",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OAuth Token Custom",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test-secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test-client",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2xpZW50SWRQYXNzd29yZDpzZWNyZXQ=",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "social",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "custom",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "whatever works",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Example Controller",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzE4NjM3MDEsInVzZXJfbmFtZSI6IjEwODEyODA3Njk0Njg3MjU3OTQ1MyIsImp0aSI6IjFmMTNkZmE1LTc5OGMtNGUxNy05OWJlLTkzZWUyZGI4ZTBhYSIsImNsaWVudF9pZCI6InRlc3QtY2xpZW50Iiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.WlwJGol4LmoEfwxz-qzSQ2ms4UenhcL5swez2SWCHkY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic Y2xpZW50SWRQYXNzd29yZDpzZWNyZXQ=",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/example",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"example"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
